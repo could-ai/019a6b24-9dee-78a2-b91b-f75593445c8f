@@ -340,8 +340,9 @@ class _ChatScreenState extends State<ChatScreen> {
                     color: Colors.white.withOpacity(0.6),
                   ),
                 ),
-                if (isSent) ..[
+                if (isSent)
                   const SizedBox(width: 4),
+                if (isSent)
                   Icon(
                     message.isRead ? Icons.done_all : Icons.done,
                     size: 14,
@@ -349,7 +350,6 @@ class _ChatScreenState extends State<ChatScreen> {
                         ? const Color(0xFF00D9FF)
                         : Colors.white.withOpacity(0.6),
                   ),
-                ],
               ],
             ),
           ],

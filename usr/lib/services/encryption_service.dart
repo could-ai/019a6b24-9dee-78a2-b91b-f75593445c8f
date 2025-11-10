@@ -1,10 +1,9 @@
 import 'package:encrypt/encrypt.dart' as encrypt_lib;
-import 'package:pointycastle/export.dart' hide SecureRandom;
+import 'package:pointycastle/export.dart';
 import 'dart:convert';
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:crypto/crypto.dart';
-import 'package:pointycastle/pointycastle.dart' as pc;
 
 class EncryptionService {
   /// Generate RSA-4096 key pair for user identity
@@ -97,11 +96,11 @@ class EncryptionService {
   
   // Helper methods
   
-  pc.SecureRandom _getSecureRandom() {
-    final secureRandom = pc.FortunaRandom();
+  SecureRandom _getSecureRandom() {
+    final secureRandom = SecureRandom('Fortuna');
     final random = Random.secure();
     final seeds = List<int>.generate(32, (_) => random.nextInt(256));
-    secureRandom.seed(pc.KeyParameter(Uint8List.fromList(seeds)));
+    secureRandom.seed(KeyParameter(Uint8List.fromList(seeds)));
     return secureRandom;
   }
   
